@@ -89,6 +89,17 @@ export const URLS = {
     `${urlBase}${activeProject}/launch/attribute/values?${
       key ? `filter.eq.attributeKey=${key}&` : ''
     }filter.cnt.attributeValue=${searchTerm}`,
+  itemAttributeKeysByLaunchName: (activeProject, launchName = '') => (searchTerm = '') =>
+    `${urlBase}${activeProject}/item/step/attribute/keys?${
+      launchName ? `filter.eq.launchName=${launchName}&` : ''
+    }filter.cnt.attributeKey=${searchTerm}`,
+  itemAttributeValuesByLaunchName: (activeProject, launchName = '', key = '') => (
+    searchTerm = '',
+  ) =>
+    `${urlBase}${activeProject}/item/step/attribute/values?
+    ${launchName ? `filter.eq.launchName=${launchName}&` : ''}
+    ${key ? `filter.eq.attributeKey=${key}&` : ''}
+    filter.cnt.attributeValue=${searchTerm}`,
   launchNameSearch: (activeProject) => (searchTerm = '') =>
     `${urlBase}${activeProject}/launch/names?filter.cnt.name=${searchTerm}`,
   launchOwnersSearch: (activeProject) => (searchTerm = '') =>
